@@ -223,3 +223,22 @@ Modified docs:
 - docs/CHANGELOG.md — v1.0.2 entry added
 
 Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
+
+v1.0.3
+
+Agent-06 final production audit — full 20-category audit of entire codebase.
+
+Issues Found and Fixed:
+1. AnnouncementBar.tsx: 4 decorative icons (ShieldCheck, RefreshCw, Truck, Lock)
+   missing aria-hidden="true" — added to all 4 icons.
+   (Accessibility fix — screen readers no longer announce decorative icons)
+
+2. layout.tsx: <body> className "bg-gray-50" hardcoded, overriding design token.
+   @layer base { body { @apply bg-background } } was being overridden by the
+   utility class bg-gray-50 (utility classes win over base layer in Tailwind).
+   Fixed: bg-gray-50 → bg-background.
+   (Design system fix — body now correctly uses the bg-background design token)
+
+No other production issues found across all 20 audit categories.
+
+Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)

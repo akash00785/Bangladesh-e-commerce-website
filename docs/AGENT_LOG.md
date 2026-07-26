@@ -406,3 +406,68 @@ Files Modified:
 - docs/PROJECT_STATUS.md — Agent-06 verification recorded
 - docs/AGENT_LOG.md — Agent-06 execution log added
 - docs/CHANGELOG.md — v1.0.2 entry added
+
+---
+
+Agent:
+Agent-06 (Final Production Audit)
+
+Task:
+Complete production-level audit of the entire repository — all 20 audit categories
+covering broken imports, duplicates, dead code, unused imports/variables, hardcoded
+colors, accessibility, responsive issues, hydration, Next.js best practices,
+performance, image optimization, security, SEO, and code smell.
+
+Status:
+Completed
+
+Audit Scope:
+✔ Broken imports — none found
+✔ Duplicate components — none found
+✔ Duplicate CSS — none found
+✔ Dead code — none found
+✔ Unused files — none found
+✔ Unused imports — none found
+✔ Unused variables — none found
+✔ Hardcoded colors — noted; layout.tsx bg-gray-50 fixed; footer inline style pre-existing (acknowledged)
+✔ Hardcoded spacing — none found; standard Tailwind spacing classes used correctly
+✔ console.log — none found
+✔ TODO / FIXME — none found
+✔ Accessibility — 2 issues found and fixed (see below)
+✔ Responsive issues — none found
+✔ Hydration issues — SaleCountdown INITIAL_COUNTDOWN pattern verified safe
+✔ Next.js best practices — bg-gray-50 body override fixed; metadata, lang, image all correct
+✔ Performance issues — none found; priority on hero image only; all images lazy by default
+✔ Image optimization — all images use next/image with fill, sizes, alt text
+✔ Security issues — no dangerouslySetInnerHTML, no exposed secrets, rel="noopener noreferrer" on external links
+✔ SEO issues — metadata title/description present, lang="bn", heading hierarchy correct
+✔ Code smell — none remaining
+
+Issues Found and Fixed:
+1. AnnouncementBar.tsx — 4 decorative lucide icons (ShieldCheck, RefreshCw, Truck, Lock)
+   were missing aria-hidden="true". Screen readers would announce them unnecessarily
+   alongside the accompanying text, causing redundant announcements.
+   Fix: added aria-hidden="true" to each Icon in the features.map render.
+
+2. layout.tsx — <body> had className "bg-gray-50" which is a hardcoded Tailwind color
+   class that overrides the design system's @layer base rule
+   "body { @apply bg-background text-foreground; }" from globals.css.
+   Tailwind utility classes have higher cascade priority than @layer base rules,
+   so bg-gray-50 was always applied instead of the design token bg-background.
+   This means dark mode would never change the body background color.
+   Fix: replaced bg-gray-50 with bg-background.
+
+Pre-existing Noted Issues (not changed per audit rules):
+- SiteFooter.tsx: span with className="text-brand" also has
+  style={{ color: "oklch(0.72 0.08 52)" }} — inline style overrides the class.
+  This was intentional by Agent-05 to ensure readable brand color on the dark
+  footer background (bg-foreground). Acknowledged and left untouched.
+
+Files Modified:
+- src/components/layout/AnnouncementBar.tsx — aria-hidden="true" added to icons
+- src/app/layout.tsx — bg-gray-50 replaced with bg-background
+
+Final Status:
+- Build: PASS (Next.js 16.2.12, Turbopack, 4/4 static pages)
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
