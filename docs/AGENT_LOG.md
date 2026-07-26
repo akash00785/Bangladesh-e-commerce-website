@@ -57,3 +57,37 @@ Issues Found and Fixed:
 - @base-ui/react was used in src/components/ui/button.tsx but was missing
   from package.json dependencies (was only in package-lock.json).
   Fixed: added "@base-ui/react": "^1.6.0" to package.json dependencies.
+
+---
+
+Agent:
+Agent-02
+
+Task:
+Header and Navigation — Top Announcement Bar, Header (Logo, Search, Login,
+Wishlist, Cart), Desktop + Mobile Navigation, Sticky Header.
+
+Status:
+Completed
+
+Files Created:
+- src/types/navigation.ts
+- src/constants/navigation.ts
+- src/components/layout/AnnouncementBar.tsx
+- src/components/layout/Header.tsx
+- src/components/layout/Navigation.tsx
+- src/components/layout/MobileMenu.tsx
+- src/components/layout/SiteHeader.tsx
+
+Files Modified:
+- src/app/layout.tsx (SiteHeader integrated, metadata বাংলায় আপডেট)
+- src/app/page.tsx (placeholder content)
+- src/app/globals.css (broken "shadcn/tailwind.css" import removed)
+- docs/AGENT_LOG.md (this file)
+- docs/PROJECT_STATUS.md (updated)
+- docs/CHANGELOG.md (v0.0.5 added)
+
+Issues Found and Fixed:
+- tw-animate-css missing from node_modules — installed via npm
+- shadcn/tailwind.css broken import in globals.css — removed (CSS variables already inline)
+- Unused "Search" import warning in Header.tsx and SiteHeader.tsx — removed

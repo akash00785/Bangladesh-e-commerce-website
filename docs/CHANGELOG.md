@@ -38,3 +38,25 @@ Fix:
 - @base-ui/react@^1.6.0 missing from package.json dependencies —
   package was installed by shadcn/ui init and present in package-lock.json
   and node_modules but not declared explicitly; added to dependencies.
+
+v0.0.5
+
+Header and Navigation completed by Agent-02.
+
+New files:
+- src/types/navigation.ts — NavItem and CartItem TypeScript types
+- src/constants/navigation.ts — NAV_ITEMS array (8 categories) and announcement features
+- src/components/layout/AnnouncementBar.tsx — Top green bar with 4 feature badges
+- src/components/layout/Header.tsx — Logo + Search box + Account/Wishlist/Cart icons
+- src/components/layout/Navigation.tsx — Desktop horizontal nav with active state
+- src/components/layout/MobileMenu.tsx — Slide-in drawer for mobile with backdrop
+- src/components/layout/SiteHeader.tsx — Sticky wrapper combining all header sections
+
+Modified:
+- src/app/layout.tsx — SiteHeader integrated, lang="bn", metadata বাংলায়
+- src/app/page.tsx — Simple welcome placeholder
+- src/app/globals.css — Removed broken shadcn/tailwind.css import; tw-animate-css installed
+
+Build status: PASS
+TypeScript: PASS
+Lint: PASS (0 errors, 0 warnings)
