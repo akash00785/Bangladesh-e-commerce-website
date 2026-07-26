@@ -74,6 +74,31 @@ Fixed:
 
 Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
 
+v0.0.9
+
+Featured Products and Flash Sale completed by Agent-04.
+
+New files:
+- src/types/product.ts — Product data interface
+- src/constants/products.ts — 8 featured products and 8 flash sale products
+- src/components/product/ProductCard.tsx — reusable product card with wishlist,
+  quick view, rating, pricing, add-to-cart UI, hover animation, and responsive layout
+- src/components/product/ProductGrid.tsx — shared responsive product grid
+- src/components/home/FeaturedProducts.tsx — featured products section
+- src/components/home/SaleCountdown.tsx — frontend-only Bengali countdown UI
+- src/components/home/FlashSaleSection.tsx — flash sale section
+
+Modified:
+- src/app/page.tsx — Featured Products and Flash Sale composed after CategorySection
+- src/app/globals.css — reusable brand and sale color tokens added
+- docs/PROJECT_STATUS.md — updated project phase and completion status
+- docs/AGENT_LOG.md — added Agent-04 execution log
+
+Quality:
+- Build: PASS
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
 v0.0.7
 
 Hero Banner and Category Section completed by Agent-03.

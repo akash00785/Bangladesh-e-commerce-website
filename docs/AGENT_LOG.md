@@ -115,6 +115,39 @@ Final Status:
 ---
 
 Agent:
+Agent-04
+
+Task:
+Featured Products and Flash Sale — reusable ProductCard, Featured Products
+section with 8 products, Flash Sale section with frontend countdown and 8 products.
+
+Status:
+Completed
+
+New Files Created:
+- src/types/product.ts — Product interface
+- src/constants/products.ts — Featured and flash sale product data
+- src/components/product/ProductCard.tsx — reusable responsive product card
+- src/components/product/ProductGrid.tsx — shared responsive product grid
+- src/components/home/FeaturedProducts.tsx — featured products section
+- src/components/home/SaleCountdown.tsx — frontend-only countdown UI
+- src/components/home/FlashSaleSection.tsx — flash sale section
+
+Modified:
+- src/app/page.tsx — added Featured Products and Flash Sale sections
+- src/app/globals.css — added reusable brand and sale design tokens
+- docs/PROJECT_STATUS.md — updated phase and completion status
+- docs/AGENT_LOG.md — recorded Agent-04 work
+- docs/CHANGELOG.md — added v0.0.9 entry
+
+Final Status:
+- Build: PASS
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
+---
+
+Agent:
 Agent-03
 
 Task:

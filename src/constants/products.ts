@@ -1,0 +1,178 @@
+import type { Product } from "@/types/product";
+
+const PRODUCT_IMAGES = {
+  blackShirt:
+    "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=700&h=875&fit=crop&auto=format",
+  denimJacket:
+    "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=700&h=875&fit=crop&auto=format",
+  leatherShoes:
+    "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=700&h=875&fit=crop&auto=format",
+  whiteTshirt:
+    "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700&h=875&fit=crop&auto=format",
+  classicWatch:
+    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&h=875&fit=crop&auto=format",
+  leatherBag:
+    "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700&h=875&fit=crop&auto=format",
+  linenPanjabi:
+    "https://images.unsplash.com/photo-1610652492500-ded49ceeb378?w=700&h=875&fit=crop&auto=format",
+  sunglasses:
+    "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700&h=875&fit=crop&auto=format",
+} as const;
+
+export const FEATURED_PRODUCTS: Product[] = [
+  {
+    id: "featured-black-shirt",
+    namebn: "প্রিমিয়াম স্লিম ফিট শার্ট",
+    brand: "Sailor",
+    image: PRODUCT_IMAGES.blackShirt,
+    discount: "২০% ছাড়",
+    rating: "৪.৮",
+    reviewCount: "১২৪",
+    currentPrice: "৳ ১,৫৯০",
+    oldPrice: "৳ ১,৯৯০",
+    href: "/product/premium-slim-fit-shirt",
+  },
+  {
+    id: "featured-denim-jacket",
+    namebn: "ক্লাসিক ডেনিম জ্যাকেট",
+    brand: "Yellow",
+    image: PRODUCT_IMAGES.denimJacket,
+    discount: "১৫% ছাড়",
+    rating: "৪.৭",
+    reviewCount: "৮৬",
+    currentPrice: "৳ ২,৪৯০",
+    oldPrice: "৳ ২,৯৫০",
+    href: "/product/classic-denim-jacket",
+  },
+  {
+    id: "featured-leather-shoes",
+    namebn: "লেদার ফরমাল লোফার",
+    brand: "Apex",
+    image: PRODUCT_IMAGES.leatherShoes,
+    discount: "১০% ছাড়",
+    rating: "৪.৯",
+    reviewCount: "২১৮",
+    currentPrice: "৳ ২,৭৯০",
+    oldPrice: "৳ ৩,১০০",
+    href: "/product/leather-formal-loafer",
+  },
+  {
+    id: "featured-white-tshirt",
+    namebn: "অর্গানিক কটন টি-শার্ট",
+    brand: "Ecstasy",
+    image: PRODUCT_IMAGES.whiteTshirt,
+    discount: "২৫% ছাড়",
+    rating: "৪.৬",
+    reviewCount: "৭৩",
+    currentPrice: "৳ ৮৯০",
+    oldPrice: "৳ ১,১৯০",
+    href: "/product/organic-cotton-tshirt",
+  },
+  {
+    id: "featured-classic-watch",
+    namebn: "মিনিমাল ক্লাসিক ঘড়ি",
+    brand: "Naviforce",
+    image: PRODUCT_IMAGES.classicWatch,
+    discount: "১৮% ছাড়",
+    rating: "৪.৮",
+    reviewCount: "১৫৬",
+    currentPrice: "৳ ১,৮৫০",
+    oldPrice: "৳ ২,২৫০",
+    href: "/product/minimal-classic-watch",
+  },
+  {
+    id: "featured-leather-bag",
+    namebn: "প্রিমিয়াম লেদার ব্যাগ",
+    brand: "Bata",
+    image: PRODUCT_IMAGES.leatherBag,
+    discount: "১২% ছাড়",
+    rating: "৪.৭",
+    reviewCount: "৯২",
+    currentPrice: "৳ ২,১৯০",
+    oldPrice: "৳ ২,৪৯০",
+    href: "/product/premium-leather-bag",
+  },
+  {
+    id: "featured-linen-panjabi",
+    namebn: "সফট লিনেন পাঞ্জাবি",
+    brand: "Aarong",
+    image: PRODUCT_IMAGES.linenPanjabi,
+    discount: "২০% ছাড়",
+    rating: "৪.৯",
+    reviewCount: "১৮৪",
+    currentPrice: "৳ ১,৯৯০",
+    oldPrice: "৳ ২,৪৯০",
+    href: "/product/soft-linen-panjabi",
+  },
+  {
+    id: "featured-sunglasses",
+    namebn: "পোলারাইজড সানগ্লাস",
+    brand: "Vogue",
+    image: PRODUCT_IMAGES.sunglasses,
+    discount: "৩০% ছাড়",
+    rating: "৪.৬",
+    reviewCount: "৬৭",
+    currentPrice: "৳ ১,২৯০",
+    oldPrice: "৳ ১,৮৫০",
+    href: "/product/polarized-sunglasses",
+  },
+];
+
+export const FLASH_SALE_PRODUCTS: Product[] = [
+  {
+    ...FEATURED_PRODUCTS[0],
+    id: "sale-black-shirt",
+    discount: "৩৫% ছাড়",
+    currentPrice: "৳ ১,২৯০",
+    oldPrice: "৳ ১,৯৯০",
+  },
+  {
+    ...FEATURED_PRODUCTS[1],
+    id: "sale-denim-jacket",
+    discount: "৩০% ছাড়",
+    currentPrice: "৳ ২,০৫০",
+    oldPrice: "৳ ২,৯৫০",
+  },
+  {
+    ...FEATURED_PRODUCTS[2],
+    id: "sale-leather-shoes",
+    discount: "২৫% ছাড়",
+    currentPrice: "৳ ২,৩৫০",
+    oldPrice: "৳ ৩,১০০",
+  },
+  {
+    ...FEATURED_PRODUCTS[3],
+    id: "sale-white-tshirt",
+    discount: "৪০% ছাড়",
+    currentPrice: "৳ ৭১০",
+    oldPrice: "৳ ১,১৯০",
+  },
+  {
+    ...FEATURED_PRODUCTS[4],
+    id: "sale-classic-watch",
+    discount: "২৮% ছাড়",
+    currentPrice: "৳ ১,৬২০",
+    oldPrice: "৳ ২,২৫০",
+  },
+  {
+    ...FEATURED_PRODUCTS[5],
+    id: "sale-leather-bag",
+    discount: "৩৫% ছাড়",
+    currentPrice: "৳ ১,৬২০",
+    oldPrice: "৳ ২,৪৯০",
+  },
+  {
+    ...FEATURED_PRODUCTS[6],
+    id: "sale-linen-panjabi",
+    discount: "৩০% ছাড়",
+    currentPrice: "৳ ১,৭৪০",
+    oldPrice: "৳ ২,৪৯০",
+  },
+  {
+    ...FEATURED_PRODUCTS[7],
+    id: "sale-sunglasses",
+    discount: "৪৫% ছাড়",
+    currentPrice: "৳ ১,০২০",
+    oldPrice: "৳ ১,৮৫০",
+  },
+];
