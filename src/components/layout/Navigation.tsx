@@ -8,7 +8,7 @@ export default function Navigation() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full bg-white border-b border-gray-200">
+    <nav aria-label="প্রধান নেভিগেশন" className="w-full bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4">
         <ul className="hidden md:flex items-center gap-0">
           {NAV_ITEMS.map((item) => {

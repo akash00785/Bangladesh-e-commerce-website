@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { User, Heart, ShoppingCart, ShoppingBag } from "lucide-react";
 import AnnouncementBar from "./AnnouncementBar";
 import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
@@ -32,13 +34,9 @@ export default function SiteHeader() {
             : "relative",
         ].join(" ")}
       >
-        {/* Mobile menu button lives in header row */}
         <div className="w-full bg-white border-b border-gray-200 py-3 px-4">
           <div className="max-w-7xl mx-auto flex items-center gap-4">
-            {/* Mobile hamburger — visible only on mobile */}
             <MobileMenu />
-
-            {/* Header content (logo + search + icons) — reuse Header internals */}
             <HeaderInner />
           </div>
         </div>
@@ -47,24 +45,14 @@ export default function SiteHeader() {
         <Navigation />
       </div>
 
-      {/* Spacer when sticky so content doesn't jump */}
+      {/* Spacer when sticky so content does not jump */}
       {isSticky && <div className="h-[112px]" aria-hidden="true" />}
     </>
   );
 }
 
-// Inline reusable header row (logo + search + icons) to avoid double renders
-import Link from "next/link";
-import { useState as useStateInner } from "react";
-import {
-  User,
-  Heart,
-  ShoppingCart,
-  ShoppingBag,
-} from "lucide-react";
-
 function HeaderInner() {
-  const [searchQuery, setSearchQuery] = useStateInner("");
+  const [searchQuery, setSearchQuery] = useState("");
   const wishlistCount = 0;
   const cartCount = 0;
 
@@ -80,7 +68,7 @@ function HeaderInner() {
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2 shrink-0 mr-2">
         <div className="bg-[#8B4513] p-1.5 rounded-lg">
-          <ShoppingBag className="w-6 h-6 text-white" />
+          <ShoppingBag className="w-6 h-6 text-white" aria-hidden="true" />
         </div>
         <div className="leading-tight">
           <div className="text-lg font-bold text-gray-900 leading-none">
@@ -93,6 +81,7 @@ function HeaderInner() {
       {/* Search */}
       <form
         onSubmit={handleSearch}
+        role="search"
         className="flex-1 flex items-center border border-gray-300 rounded-lg overflow-hidden focus-within:border-[#8B4513] focus-within:ring-1 focus-within:ring-[#8B4513] transition-all"
       >
         <input
@@ -100,10 +89,12 @@ function HeaderInner() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="খুঁজুন এখানে..."
+          aria-label="পণ্য খুঁজুন"
           className="flex-1 px-4 py-2 text-sm text-gray-700 placeholder-gray-400 outline-none bg-white"
         />
         <button
           type="submit"
+          aria-label="সার্চ করুন"
           className="bg-[#8B4513] hover:bg-[#7a3b10] text-white px-5 py-2 text-sm font-semibold transition-colors shrink-0"
         >
           খুঁজুন
@@ -114,17 +105,19 @@ function HeaderInner() {
       <div className="flex items-center gap-1 shrink-0">
         <Link
           href="/account/login"
+          aria-label="অ্যাকাউন্ট"
           className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg hover:bg-gray-100 transition-colors text-gray-700 hover:text-[#8B4513]"
         >
-          <User className="w-5 h-5" />
+          <User className="w-5 h-5" aria-hidden="true" />
           <span className="text-[10px] hidden sm:block">অ্যাকাউন্ট</span>
         </Link>
 
         <Link
           href="/wishlist"
+          aria-label="উইশলিস্ট"
           className="relative flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg hover:bg-gray-100 transition-colors text-gray-700 hover:text-[#8B4513]"
         >
-          <Heart className="w-5 h-5" />
+          <Heart className="w-5 h-5" aria-hidden="true" />
           {wishlistCount > 0 && (
             <span className="absolute -top-0.5 -right-0.5 bg-[#8B4513] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
               {wishlistCount}
@@ -135,9 +128,10 @@ function HeaderInner() {
 
         <Link
           href="/cart"
+          aria-label="কার্ট"
           className="relative flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg hover:bg-gray-100 transition-colors text-gray-700 hover:text-[#8B4513]"
         >
-          <ShoppingCart className="w-5 h-5" />
+          <ShoppingCart className="w-5 h-5" aria-hidden="true" />
           {cartCount > 0 && (
             <span className="absolute -top-0.5 -right-0.5 bg-[#8B4513] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
               {cartCount}

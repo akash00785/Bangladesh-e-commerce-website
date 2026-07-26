@@ -3,7 +3,3 @@ export interface NavItem {
   href: string;
   children?: NavItem[];
 }
-
-export interface CartItem {
-  count: number;
-}

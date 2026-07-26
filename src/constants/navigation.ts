@@ -10,10 +10,3 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "অফার", href: "/offers" },
   { label: "ব্লগ", href: "/blog" },
 ];
-
-export const ANNOUNCEMENT_FEATURES = [
-  { icon: "shield-check", text: "অরিজিনাল পণ্য" },
-  { icon: "refresh-cw", text: "সহজ রিটার্ন" },
-  { icon: "truck", text: "দ্রুত ডেলিভারি" },
-  { icon: "lock", text: "নিরাপদ পেমেন্ট" },
-];
