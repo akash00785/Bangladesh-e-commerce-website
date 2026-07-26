@@ -1,5 +1,46 @@
 # CHANGELOG — Version history and list of changes made across all project phases.
 
+v1.1.0
+
+Shopping Cart Page completed by Agent-07.
+
+New files:
+- src/types/cart.ts — CartItem, CartCoupon, CartContextValue TypeScript interfaces
+- src/constants/cart.ts — VALID_COUPONS (3 codes), FREE_SHIPPING_THRESHOLD, SHIPPING_FEE constants
+- src/utils/price.ts — parseBanglaPrice() and formatBanglaPrice() Bengali numeral utilities
+- src/context/CartContext.tsx — CartProvider + useCart() with full state management
+- src/components/cart/QuantityStepper.tsx — reusable accessible quantity stepper (min/max enforced)
+- src/components/cart/RemoveItemButton.tsx — reusable remove item button with aria-label
+- src/components/cart/CartItemCard.tsx — cart item card (image, size/color, qty, line total, remove)
+- src/components/cart/CouponCodeBox.tsx — coupon code input with validation and success state
+- src/components/cart/OrderSummaryCard.tsx — dynamic order summary (subtotal, coupon, shipping, total)
+- src/components/cart/ShippingInfoBox.tsx — shipping info (free threshold, fee, return policy)
+- src/components/cart/EstimatedDelivery.tsx — delivery timeline (Dhaka 2-3 days, outside 3-5 days)
+- src/components/cart/EmptyCartState.tsx — empty cart state with continue shopping link
+- src/app/cart/page.tsx — /cart route; shows EmptyCartState or full cart layout
+
+Modified:
+- src/app/layout.tsx — wrapped with CartProvider; SiteHeader and SiteFooter inside provider
+- docs/PROJECT_STATUS.md — Agent-07 phase and completion recorded
+- docs/AGENT_LOG.md — Agent-07 execution log added
+- docs/CHANGELOG.md — v1.1.0 entry added
+
+Features:
+- Mobile-first responsive layout (single column → lg:12-column grid)
+- Three valid coupon codes: NEWUSER (10%), EIDMUBARAK (15%), FASHIONBD (20%)
+- Free shipping above ৳২,০০০; ৳১২০ below threshold
+- Dynamic totals: subtotal, coupon discount, shipping fee, grand total
+- Savings callout when discount applied
+- Demo cart pre-populated with 3 items from FEATURED_PRODUCTS
+- All interactive elements have aria-label, aria-live, aria-invalid, role attributes
+- No hardcoded colors — all design tokens used
+- No new packages installed
+
+Quality:
+- Build: PASS (Next.js 16.2.12, Turbopack, 5/5 static pages)
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
 v0.0.1
 
 Initial project foundation created.
