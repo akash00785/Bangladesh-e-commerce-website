@@ -25,7 +25,7 @@ export default function CategorySection() {
 
         {/* Category grid */}
         <ul
-          className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-x-4 gap-y-8"
+          className="grid grid-cols-4 md:grid-cols-8 gap-x-4 gap-y-8"
           role="list"
           aria-label="পণ্য ক্যাটেগরি তালিকা"
         >

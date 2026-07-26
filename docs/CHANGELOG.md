@@ -61,17 +61,15 @@ v0.0.6
 Agent-02 final quality audit.
 
 Fixed:
-- SiteHeader.tsx: imports were placed after function body (invalid ES module syntax) — moved to top
-- SiteHeader.tsx: "useState as useStateInner" alias removed; single useState used throughout
-- Header.tsx: deleted — file was entirely unused (HeaderInner in SiteHeader replaced it)
+- SiteHeader.tsx: imports were placed after function body — moved to top
+- SiteHeader.tsx: "useState as useStateInner" alias removed
+- Header.tsx: deleted — file was entirely unused
 - constants/navigation.ts: ANNOUNCEMENT_FEATURES unused export removed
 - types/navigation.ts: CartItem unused interface removed
-- Search input: aria-label="পণ্য খুঁজুন" added
-- Search form: role="search" added
-- Search button: aria-label="সার্চ করুন" added
+- Search input/form/button: aria-labels added
 - Account/Wishlist/Cart links: aria-label added to each
 - Lucide icons: aria-hidden="true" added to all decorative icons
-- Navigation: aria-label="প্রধান নেভিগেশন" added to nav element
+- Navigation: aria-label="প্রধান নেভিগেশন" added
 - AnnouncementBar: role="banner" and aria-label="বিশেষ ঘোষণা" added
 
 Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
@@ -83,18 +81,34 @@ Hero Banner and Category Section completed by Agent-03.
 New files:
 - src/types/home.ts — CategoryItem, ServiceFeature interfaces
 - src/constants/home.ts — CATEGORIES (8 items), SERVICE_FEATURES (4 items)
-- src/components/home/HeroBanner.tsx — Premium hero banner with Bengali headline
-  "নতুন স্টাইল নতুন তুমি", CTA buttons, model image, decorative shapes,
-  trust stats, floating discount badge, responsive layout
-- src/components/home/ServiceFeatures.tsx — 4-feature service bar with icons
-  (ফ্রি ডেলিভারি, সহজ রিটার্ন, সুরক্ষিত পেমেন্ট, ২৪/৭ সাপোর্ট)
-- src/components/home/CategoryCard.tsx — Reusable card with circular image,
-  hover scale + shadow effect, accessibility labels
-- src/components/home/CategorySection.tsx — 8 premium category cards in
-  responsive grid (শার্ট, টি-শার্ট, প্যান্ট, জুতা, ঘড়ি, ব্যাগ, পারফিউম, এক্সেসরিজ)
+- src/components/home/HeroBanner.tsx — Premium hero banner
+- src/components/home/ServiceFeatures.tsx — 4-feature service bar
+- src/components/home/CategoryCard.tsx — Reusable category card
+- src/components/home/CategorySection.tsx — 8 category cards grid
 
 Modified:
 - src/app/page.tsx — HeroBanner + ServiceFeatures + CategorySection composed
 - next.config.ts — images.unsplash.com added to remotePatterns
+
+Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
+
+v0.0.8
+
+Agent-03 final quality audit.
+
+Fixed:
+- ServiceFeatures.tsx: React.ElementType used without React import — replaced with
+  "import type { ElementType } from 'react'" and updated type usage
+- CategoryCard.tsx: removed unnecessary unoptimized prop from next/image —
+  remotePatterns already configured; Next.js now properly optimizes category images
+- HeroBanner.tsx: removed unnecessary unoptimized prop from hero model image —
+  Next.js now properly optimizes hero image with priority loading
+- HeroBanner.tsx: removed animate-fade-in class — class does not exist in
+  tw-animate-css, causing silent styling failure
+- CategorySection.tsx: removed redundant sm:grid-cols-4 class — identical value
+  to base grid-cols-4, redundant at sm breakpoint
+
+No console.log, TODO/FIXME, duplicate code, broken imports, missing alt text,
+or missing aria-labels found. No unnecessary dependencies added.
 
 Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)

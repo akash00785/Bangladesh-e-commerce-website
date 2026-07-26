@@ -21,7 +21,6 @@ export default function CategoryCard({ category }: CategoryCardProps) {
           fill
           sizes="(max-width: 640px) 96px, (max-width: 1024px) 112px, 128px"
           className="object-cover transition-transform duration-500 group-hover:scale-110"
-          unoptimized
         />
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-[#8B4513]/0 group-hover:bg-[#8B4513]/10 transition-colors duration-300 rounded-full" />

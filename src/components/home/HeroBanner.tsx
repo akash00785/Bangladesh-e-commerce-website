@@ -33,7 +33,7 @@ export default function HeroBanner() {
         {/* Left — text content */}
         <div className="flex-1 flex flex-col items-start gap-5 z-10 text-left max-w-xl">
           {/* Badge */}
-          <span className="inline-flex items-center gap-1.5 bg-[#8B4513]/10 text-[#8B4513] text-xs font-semibold px-3 py-1.5 rounded-full border border-[#8B4513]/20 animate-fade-in">
+          <span className="inline-flex items-center gap-1.5 bg-[#8B4513]/10 text-[#8B4513] text-xs font-semibold px-3 py-1.5 rounded-full border border-[#8B4513]/20">
             <span className="w-1.5 h-1.5 rounded-full bg-[#8B4513] inline-block" />
             নতুন কালেকশন ২০২৫
           </span>
@@ -110,7 +110,6 @@ export default function HeroBanner() {
               sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 320px"
               className="object-cover object-top"
               priority
-              unoptimized
             />
             {/* Gradient overlay at bottom */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#8B4513]/20 via-transparent to-transparent" />

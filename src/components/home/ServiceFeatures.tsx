@@ -1,7 +1,8 @@
+import type { ElementType } from "react";
 import { Truck, RefreshCw, ShieldCheck, Headphones } from "lucide-react";
 import { SERVICE_FEATURES } from "@/constants/home";
 
-const ICON_MAP: Record<string, React.ElementType> = {
+const ICON_MAP: Record<string, ElementType> = {
   truck: Truck,
   refresh: RefreshCw,
   shield: ShieldCheck,
