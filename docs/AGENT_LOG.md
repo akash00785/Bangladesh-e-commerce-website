@@ -111,3 +111,38 @@ Final Status:
 - Build: PASS
 - TypeScript: PASS (0 errors)
 - Lint: PASS (0 errors, 0 warnings)
+
+---
+
+Agent:
+Agent-03
+
+Task:
+Hero Banner and Category Section — Premium HeroBanner, ServiceFeatures bar,
+CategorySection with 8 CategoryCards.
+
+Status:
+Completed
+
+New Files Created:
+- src/types/home.ts — CategoryItem, ServiceFeature TypeScript interfaces
+- src/constants/home.ts — CATEGORIES (8 items), SERVICE_FEATURES (4 items)
+- src/components/home/HeroBanner.tsx — Premium hero with Bengali headline,
+  CTA buttons, model image, decorative shapes, trust stats, animations
+- src/components/home/ServiceFeatures.tsx — 4 service feature badges bar
+- src/components/home/CategoryCard.tsx — Reusable category card with image,
+  Bengali name, hover effects, accessibility labels
+- src/components/home/CategorySection.tsx — 8-card responsive category grid
+  with section heading and decorative underline
+
+Modified Files:
+- src/app/page.tsx — replaced placeholder with HeroBanner + ServiceFeatures + CategorySection
+- next.config.ts — added remotePatterns for images.unsplash.com
+
+Issues Found and Fixed:
+None — all files passed build, TypeScript, and lint on first run.
+
+Final Status:
+- Build: PASS
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)

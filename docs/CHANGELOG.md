@@ -75,3 +75,26 @@ Fixed:
 - AnnouncementBar: role="banner" and aria-label="বিশেষ ঘোষণা" added
 
 Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
+
+v0.0.7
+
+Hero Banner and Category Section completed by Agent-03.
+
+New files:
+- src/types/home.ts — CategoryItem, ServiceFeature interfaces
+- src/constants/home.ts — CATEGORIES (8 items), SERVICE_FEATURES (4 items)
+- src/components/home/HeroBanner.tsx — Premium hero banner with Bengali headline
+  "নতুন স্টাইল নতুন তুমি", CTA buttons, model image, decorative shapes,
+  trust stats, floating discount badge, responsive layout
+- src/components/home/ServiceFeatures.tsx — 4-feature service bar with icons
+  (ফ্রি ডেলিভারি, সহজ রিটার্ন, সুরক্ষিত পেমেন্ট, ২৪/৭ সাপোর্ট)
+- src/components/home/CategoryCard.tsx — Reusable card with circular image,
+  hover scale + shadow effect, accessibility labels
+- src/components/home/CategorySection.tsx — 8 premium category cards in
+  responsive grid (শার্ট, টি-শার্ট, প্যান্ট, জুতা, ঘড়ি, ব্যাগ, পারফিউম, এক্সেসরিজ)
+
+Modified:
+- src/app/page.tsx — HeroBanner + ServiceFeatures + CategorySection composed
+- next.config.ts — images.unsplash.com added to remotePatterns
+
+Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
