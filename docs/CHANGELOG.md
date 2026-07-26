@@ -29,3 +29,12 @@ Changes:
 - package.json: added "type-check" script (tsc --noEmit)
 - docs/PROJECT_STATUS.md updated
 - docs/AGENT_LOG.md updated
+
+v0.0.4
+
+Final quality check completed by Agent-01.
+
+Fix:
+- @base-ui/react@^1.6.0 missing from package.json dependencies —
+  package was installed by shadcn/ui init and present in package-lock.json
+  and node_modules but not declared explicitly; added to dependencies.
