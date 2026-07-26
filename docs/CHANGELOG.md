@@ -159,3 +159,30 @@ No console.log, TODO/FIXME, duplicate code, broken imports, missing alt text,
 or missing aria-labels found. No unnecessary dependencies added.
 
 Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
+
+v1.0.0
+
+Product Details Preview, Newsletter Section, and Premium Footer completed by Agent-05 Recovery.
+
+New files:
+- src/types/footer.ts — FooterLink, FooterColumn, PaymentMethod TypeScript interfaces
+- src/constants/footer.ts — FOOTER_COLUMNS (4 nav columns), PAYMENT_METHODS (4 payment options)
+- src/components/product/ProductDetailsPreview.tsx — interactive product detail preview with
+  image gallery thumbnails, size selector (S/M/L/XL/XXL), color swatches (5 colors),
+  quantity control, add-to-cart, buy-now CTA, and guarantee bar (delivery, return, secure)
+- src/components/home/NewsletterSection.tsx — client-side email subscription form with
+  validation, success state, and trust badges; aria-live feedback
+- src/components/layout/SiteFooter.tsx — 6-column footer with brand block, 4 nav columns,
+  social links, payment methods grid (COD/bKash/Nagad/Rocket), bottom bar with copyright
+
+Modified:
+- src/app/page.tsx — ProductDetailsPreview and NewsletterSection composed after FlashSaleSection
+- src/app/layout.tsx — SiteFooter added to root layout
+- docs/PROJECT_STATUS.md — updated phase and completion status
+- docs/CHANGELOG.md — this entry
+- docs/AGENT_LOG.md — Agent-05 Recovery execution log
+
+Quality:
+- Build: PASS
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
