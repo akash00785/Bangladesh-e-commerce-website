@@ -35,7 +35,7 @@ export default function HeroBanner() {
           {/* Badge */}
           <span className="inline-flex items-center gap-1.5 bg-[#8B4513]/10 text-[#8B4513] text-xs font-semibold px-3 py-1.5 rounded-full border border-[#8B4513]/20">
             <span className="w-1.5 h-1.5 rounded-full bg-[#8B4513] inline-block" />
-            নতুন কালেকশন ২০২৫
+            নতুন কালেকশন ২০২৬
           </span>
 
           {/* Headline */}

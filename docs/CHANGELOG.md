@@ -186,3 +186,15 @@ Quality:
 - Build: PASS
 - TypeScript: PASS (0 errors)
 - Lint: PASS (0 errors, 0 warnings)
+
+v1.0.1
+
+Final frontend production & security audit by Agent-05.
+
+Issues Fixed:
+1. SiteHeader.tsx: window.location.href → router.push() (Next.js anti-pattern fix)
+2. HeroBanner.tsx: Hardcoded year "২০২৫" → "২০২৬" (factual error fix)
+3. ProductDetailsPreview.tsx: Non-descriptive color aria-labels → named Bengali color labels
+   (accessibility fix — "কালো রঙ নির্বাচন করুন", "বাদামি রঙ নির্বাচন করুন", etc.)
+
+Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)

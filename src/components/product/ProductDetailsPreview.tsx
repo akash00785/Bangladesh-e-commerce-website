@@ -6,7 +6,13 @@ import { Button } from "@/components/ui/button";
 import { FEATURED_PRODUCTS } from "@/constants/products";
 
 const SIZES = ["S", "M", "L", "XL", "XXL"] as const;
-const COLORS = ["#1a1a1a", "#8B4513", "#2c4a7c", "#4a7c4a", "#7c4a2c"] as const;
+const COLORS = [
+  { value: "#1a1a1a", label: "কালো" },
+  { value: "#8B4513", label: "বাদামি" },
+  { value: "#2c4a7c", label: "নীল" },
+  { value: "#4a7c4a", label: "সবুজ" },
+  { value: "#7c4a2c", label: "মেরুন" },
+] as const;
 
 const GUARANTEES = [
   { id: "delivery", icon: Truck, label: "ফ্রি ডেলিভারি", sub: "৳৮০০+ অর্ডারে" },
@@ -181,14 +187,14 @@ export default function ProductDetailsPreview() {
                     রঙ নির্বাচন করুন
                   </p>
                   <div className="flex gap-2.5" role="radiogroup" aria-label="রঙ নির্বাচন">
-                    {COLORS.map((color, idx) => (
+                    {COLORS.map(({ value, label }, idx) => (
                       <button
-                        key={color}
+                        key={value}
                         type="button"
                         role="radio"
                         aria-checked={idx === 0}
-                        aria-label={`রঙ ${idx + 1}`}
-                        style={{ backgroundColor: color }}
+                        aria-label={`${label} রঙ নির্বাচন করুন`}
+                        style={{ backgroundColor: value }}
                         className={[
                           "size-9 rounded-full border-2 transition-all",
                           idx === 0

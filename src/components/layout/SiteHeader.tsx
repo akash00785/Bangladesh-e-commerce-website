@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { User, Heart, ShoppingCart, ShoppingBag } from "lucide-react";
 import AnnouncementBar from "./AnnouncementBar";
 import Navigation from "./Navigation";
@@ -53,13 +54,14 @@ export default function SiteHeader() {
 
 function HeaderInner() {
   const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
   const wishlistCount = 0;
   const cartCount = 0;
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      window.location.href = `/search?q=${encodeURIComponent(searchQuery.trim())}`;
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
 
