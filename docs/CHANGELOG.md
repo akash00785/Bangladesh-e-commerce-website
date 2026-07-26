@@ -17,3 +17,15 @@ New folders under src/components/:
   cart, checkout, account, admin
 
 All empty folders tracked with .gitkeep files.
+
+v0.0.3
+
+Documentation and project scripts updated.
+
+Changes:
+- README.md rewritten with full professional documentation
+  (Project Overview, Tech Stack, Project Structure, Installation,
+   Development Commands, Branch Strategy, AI Agent Workflow, Coding Standards)
+- package.json: added "type-check" script (tsc --noEmit)
+- docs/PROJECT_STATUS.md updated
+- docs/AGENT_LOG.md updated

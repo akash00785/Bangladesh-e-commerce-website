@@ -25,3 +25,17 @@ Completed
 
 Issues:
 None
+
+---
+
+Agent:
+Agent-01 (Final Task)
+
+Task:
+Documentation and Project Scripts
+
+Status:
+Completed
+
+Issues:
+None — "type-check" script was missing; added to package.json
