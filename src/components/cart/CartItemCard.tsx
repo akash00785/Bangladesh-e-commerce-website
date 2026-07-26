@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useCart } from "@/context/CartContext";
 import type { CartItem } from "@/types/cart";
 import QuantityStepper from "@/components/cart/QuantityStepper";
 import RemoveItemButton from "@/components/cart/RemoveItemButton";
@@ -9,11 +8,15 @@ import { formatBanglaPrice, parseBanglaPrice } from "@/utils/price";
 
 interface CartItemCardProps {
   item: CartItem;
+  onRemove: () => void;
+  onQuantityChange: (qty: number) => void;
 }
 
-export default function CartItemCard({ item }: CartItemCardProps) {
-  const { removeItem, updateQuantity } = useCart();
-
+export default function CartItemCard({
+  item,
+  onRemove,
+  onQuantityChange,
+}: CartItemCardProps) {
   const unitPrice = parseBanglaPrice(item.currentPrice);
   const lineTotal = formatBanglaPrice(unitPrice * item.quantity);
 
@@ -31,7 +34,10 @@ export default function CartItemCard({ item }: CartItemCardProps) {
           sizes="(max-width: 640px) 80px, 96px"
           className="object-cover"
         />
-        <span className="absolute left-1.5 top-1.5 rounded-full bg-sale px-1.5 py-0.5 text-[9px] font-bold text-sale-foreground sm:text-[10px]">
+        <span
+          aria-hidden="true"
+          className="absolute left-1.5 top-1.5 rounded-full bg-sale px-1.5 py-0.5 text-[9px] font-bold text-sale-foreground sm:text-[10px]"
+        >
           {item.discount}
         </span>
       </div>
@@ -44,14 +50,11 @@ export default function CartItemCard({ item }: CartItemCardProps) {
             <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground sm:text-xs">
               {item.brand}
             </p>
-            <h3 className="line-clamp-2 text-sm font-bold text-foreground leading-5 sm:text-base">
+            <h3 className="line-clamp-2 text-sm font-bold leading-5 text-foreground sm:text-base">
               {item.namebn}
             </h3>
           </div>
-          <RemoveItemButton
-            productName={item.namebn}
-            onRemove={() => removeItem(item.cartItemId)}
-          />
+          <RemoveItemButton productName={item.namebn} onRemove={onRemove} />
         </div>
 
         {/* Size & Color */}
@@ -65,7 +68,7 @@ export default function CartItemCard({ item }: CartItemCardProps) {
         </div>
 
         {/* Bottom row: price + qty */}
-        <div className="flex items-center justify-between gap-2 flex-wrap">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-col">
             <span className="text-base font-extrabold text-brand sm:text-lg">
               {lineTotal}
@@ -83,7 +86,7 @@ export default function CartItemCard({ item }: CartItemCardProps) {
           </div>
           <QuantityStepper
             value={item.quantity}
-            onChange={(qty) => updateQuantity(item.cartItemId, qty)}
+            onChange={onQuantityChange}
             productName={item.namebn}
           />
         </div>

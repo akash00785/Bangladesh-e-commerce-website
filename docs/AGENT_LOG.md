@@ -1,6 +1,83 @@
 # AGENT_LOG — Log of all agents, their tasks, statuses, and any issues encountered.
 
 Agent:
+Agent-07 (Final Production Audit)
+
+Task:
+Cart-only production audit — Accessibility, Responsive Design, TypeScript,
+Performance, Next.js Best Practices, Design System, Repository health.
+
+Status:
+Completed
+
+Audit Scope:
+✔ Accessibility — aria-label, keyboard navigation, focus states
+✔ Responsive Design — Mobile / Tablet / Desktop
+✔ TypeScript — unused types, duplicate interfaces
+✔ Performance — unnecessary re-renders, unnecessary client components
+✔ Next.js Best Practices — Link usage, Image optimization, Server/Client correctness
+✔ Design System — no hardcoded colors, only existing design tokens
+✔ Repository — no duplicate files, no broken imports
+
+Issues Found and Fixed:
+
+1. CartItemCard.tsx — called useCart() directly, creating an unnecessary context
+   subscription for every rendered item. Each context state change caused all
+   CartItemCard instances to re-subscribe independently.
+   Fix: removed useCart() from CartItemCard; refactored to accept onRemove and
+   onQuantityChange as props. CartPage (the single context subscriber) now passes
+   the callbacks down. Reduces context fan-out and makes CartItemCard independently
+   testable and reusable.
+
+2. src/app/cart/page.tsx — breadcrumb current-page <span> was missing
+   aria-current="page". Screen readers could not identify the active breadcrumb
+   step, failing WCAG 2.1 SC 1.3.1 (Info and Relationships).
+   Fix: added aria-current="page" to the শপিং কার্ট breadcrumb span.
+
+3. CartItemCard.tsx — discount badge <span> was missing aria-hidden="true".
+   Screen readers would announce the badge text ("২০% ছাড়") alongside the product
+   name and price, creating redundant and confusing announcements.
+   Fix: added aria-hidden="true" to the discount badge span.
+
+4. QuantityStepper.tsx — flex container had gap-0 class (redundant; flex default
+   is no gap). Minor dead class removed for code cleanliness.
+   Fix: removed gap-0; reordered class order to Tailwind convention.
+
+No issues found in:
+✔ console.log — none found across all cart files
+✔ TODO / FIXME — none found
+✔ Hardcoded colors (oklch, #hex, rgb, hsl) — none found
+✔ Hardcoded spacing — none; standard Tailwind classes used correctly
+✔ Duplicate components — none found
+✔ Duplicate interfaces — none found; CartItem, CartCoupon, CartContextValue all unique
+✔ Unused types — none found; all three interfaces used in context and components
+✔ Broken imports — none found; all @/ aliases resolve correctly
+✔ Image optimization — next/image with fill, sizes, descriptive alt on CartItemCard
+✔ Link usage — Next.js <Link> used correctly; no <a href> anti-patterns
+✔ Server/Client boundary — ShippingInfoBox and EstimatedDelivery correctly remain
+   server components (no hooks, no event handlers); "use client" only where required
+✔ Unnecessary re-renders — CartContext uses useCallback + useMemo correctly
+✔ Keyboard navigation — all interactive elements (buttons, input, link) are
+   natively focusable with visible focus ring via focus-visible:ring-3 design token
+
+Files Modified:
+- src/components/cart/CartItemCard.tsx — removed useCart(), added onRemove and
+  onQuantityChange props, added aria-hidden to discount badge
+- src/app/cart/page.tsx — passes callbacks to CartItemCard, aria-current="page"
+  added to breadcrumb
+- src/components/cart/QuantityStepper.tsx — removed redundant gap-0 class
+- docs/PROJECT_STATUS.md — Agent-07 final audit recorded
+- docs/AGENT_LOG.md — this entry
+- docs/CHANGELOG.md — v1.1.1 entry added
+
+Final Status:
+- Build: PASS (Next.js 16.2.12, Turbopack, 5/5 static pages)
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
+---
+
+Agent:
 Agent-07
 
 Task:

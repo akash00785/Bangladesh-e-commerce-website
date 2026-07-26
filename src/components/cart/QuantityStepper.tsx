@@ -22,7 +22,7 @@ export default function QuantityStepper({
     <div
       role="group"
       aria-label={`${productName} এর পরিমাণ`}
-      className="flex items-center gap-0 rounded-lg border border-border overflow-hidden"
+      className="flex items-center overflow-hidden rounded-lg border border-border"
     >
       <Button
         type="button"

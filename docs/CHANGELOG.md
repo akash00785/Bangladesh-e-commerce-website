@@ -1,5 +1,31 @@
 # CHANGELOG — Version history and list of changes made across all project phases.
 
+v1.1.1
+
+Agent-07 final production audit — Cart-only audit.
+
+Issues Found and Fixed:
+1. CartItemCard.tsx: removed direct useCart() call — unnecessary context subscription
+   per cart item. Refactored to accept onRemove and onQuantityChange as props.
+   CartPage passes callbacks; CartItemCard no longer subscribes to context.
+   (Performance fix — reduces context fan-out)
+
+2. cart/page.tsx: breadcrumb current-page span missing aria-current="page".
+   Added aria-current="page" to শপিং কার্ট breadcrumb span.
+   (Accessibility fix — WCAG 2.1 SC 1.3.1 compliance)
+
+3. CartItemCard.tsx: discount badge span missing aria-hidden="true".
+   Screen readers would announce badge text redundantly alongside price.
+   Added aria-hidden="true" to discount badge.
+   (Accessibility fix)
+
+4. QuantityStepper.tsx: removed redundant gap-0 class (flex default is no gap).
+   (Code cleanliness fix)
+
+No other issues found across all 7 audit categories.
+
+Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
+
 v1.1.0
 
 Shopping Cart Page completed by Agent-07.

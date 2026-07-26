@@ -12,7 +12,7 @@ import ShippingInfoBox from "@/components/cart/ShippingInfoBox";
 import EstimatedDelivery from "@/components/cart/EstimatedDelivery";
 
 export default function CartPage() {
-  const { items, itemCount } = useCart();
+  const { items, itemCount, removeItem, updateQuantity } = useCart();
 
   if (items.length === 0) {
     return <EmptyCartState />;
@@ -34,7 +34,12 @@ export default function CartPage() {
             হোম
           </Link>
           <span aria-hidden="true">/</span>
-          <span className="font-medium text-foreground">শপিং কার্ট</span>
+          <span
+            aria-current="page"
+            className="font-medium text-foreground"
+          >
+            শপিং কার্ট
+          </span>
         </nav>
 
         {/* Page heading */}
@@ -55,7 +60,14 @@ export default function CartPage() {
           {/* Left — Cart items */}
           <div className="flex flex-col gap-4 lg:col-span-7">
             {items.map((item) => (
-              <CartItemCard key={item.cartItemId} item={item} />
+              <CartItemCard
+                key={item.cartItemId}
+                item={item}
+                onRemove={() => removeItem(item.cartItemId)}
+                onQuantityChange={(qty) =>
+                  updateQuantity(item.cartItemId, qty)
+                }
+              />
             ))}
 
             {/* Continue Shopping */}
