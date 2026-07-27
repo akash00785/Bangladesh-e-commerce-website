@@ -30,6 +30,37 @@ No other issues found across all 12 audit categories.
 
 Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
 
+v1.3.0
+
+Agent-09 — Authentication and User Account UI.
+
+New routes:
+- `/login` — Login form with phone/email, password visibility toggle, remember-me option, and forgot-password link
+- `/register` — Registration form with full account details and password confirmation
+- `/forgot-password` — Password reset request UI
+- `/account` — User dashboard with profile, personal information, recent orders, shortcuts, saved addresses, and logout CTA
+
+New reusable frontend files:
+- `src/components/account/AuthShell.tsx`
+- `src/components/account/AccountField.tsx`
+- `src/components/account/PasswordField.tsx`
+- `src/components/account/LoginForm.tsx`
+- `src/components/account/RegisterForm.tsx`
+- `src/components/account/ForgotPasswordForm.tsx`
+- `src/components/account/AccountDashboard.tsx`
+- `src/types/account.ts`
+- `src/constants/account.ts`
+
+Scope:
+- Mock data and UI only
+- No backend, API, database, OTP, Firebase, JWT, or authentication logic
+- No packages added
+
+Validation:
+- Build: PASS
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
 v1.2.0
 
 Checkout Page completed by Agent-08.
