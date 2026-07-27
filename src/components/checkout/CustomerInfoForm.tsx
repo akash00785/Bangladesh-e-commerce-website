@@ -40,7 +40,7 @@ function FieldWrapper({
       </label>
       {children}
       {error && (
-        <p role="alert" className="text-xs text-destructive">
+        <p id={`${id}-error`} role="alert" className="text-xs text-destructive">
           {error}
         </p>
       )}
@@ -78,6 +78,7 @@ export default function CustomerInfoForm({
             />
             <input
               id="fullName"
+              name="fullName"
               type="text"
               autoComplete="name"
               placeholder="আপনার পূর্ণ নাম লিখুন"
@@ -111,6 +112,7 @@ export default function CustomerInfoForm({
             />
             <input
               id="phone"
+              name="phone"
               type="tel"
               autoComplete="tel"
               placeholder="০১XXXXXXXXX"
@@ -143,6 +145,7 @@ export default function CustomerInfoForm({
             />
             <input
               id="email"
+              name="email"
               type="email"
               autoComplete="email"
               placeholder="example@email.com"

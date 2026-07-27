@@ -43,6 +43,7 @@ function SelectField({
       <div className="relative">
         <select
           id={id}
+          name={id}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           disabled={disabled}
@@ -169,7 +170,9 @@ export default function ShippingAddressForm({
           </label>
           <textarea
             id="fullAddress"
+            name="fullAddress"
             rows={3}
+            autoComplete="street-address"
             placeholder="বাড়ি নম্বর, রাস্তা, এলাকার নাম লিখুন"
             value={values.fullAddress}
             onChange={(e) => onChange("fullAddress", e.target.value)}

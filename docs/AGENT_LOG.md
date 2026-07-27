@@ -1,6 +1,98 @@
 # AGENT_LOG — Log of all agents, their tasks, statuses, and any issues encountered.
 
 Agent:
+Agent-08 (Final Production Audit)
+
+Task:
+Checkout-only production audit — 12-category audit covering hardcoded colors,
+form accessibility (label/id/name/autocomplete), ARIA attributes, icon accessibility,
+responsive layout, duplicate components, unused imports/variables/types,
+console.log/TODO/FIXME, broken imports, Design System compliance, performance,
+build/type-check/lint.
+
+Status:
+Completed
+
+Audit Scope:
+✔ Hardcoded colors — none found; all design tokens used
+✔ Form inputs label/id/name/autocomplete — 4 issues found and fixed (see below)
+✔ ARIA attributes (buttons, radios, selects) — 3 issues found and fixed (see below)
+✔ Icons/images accessibility — all correct; aria-hidden="true" on decorative icons;
+  descriptive alt on next/image; aria-label on quantity badge
+✔ Responsive layout — PASS; grid-cols-1 → lg:grid-cols-12 verified across all components
+✔ Duplicate components — none found; all 7 checkout components are unique
+✔ Unused imports — none found
+✔ Unused variables — none found
+✔ Unused types — none found; all 9 interfaces/types in checkout.ts are used
+✔ console.log — none found
+✔ TODO / FIXME — none found
+✔ Broken imports — none found; all @/ aliases resolve correctly
+✔ Design System compliance — PASS; no oklch/#hex/rgb/hsl found in checkout code
+✔ Performance — 1 dead-code fix applied (see below)
+
+Issues Found and Fixed:
+
+1. CustomerInfoForm.tsx — error <p> elements rendered by FieldWrapper had no id
+   attribute. Three inputs referenced aria-describedby="fullName-error",
+   "phone-error", "email-error" but no matching DOM element existed. Screen readers
+   silently failed to associate the error description with the input.
+   Fix: added id={`${id}-error`} to the error <p> inside FieldWrapper so the
+   aria-describedby reference resolves correctly.
+   (Accessibility fix — WCAG 2.1 SC 1.3.1)
+
+2. CustomerInfoForm.tsx — fullName, phone, email inputs missing name attribute.
+   Without name, browser autofill heuristics and native form data are incomplete.
+   Fix: added name="fullName", name="phone", name="email" to each input.
+   (Form correctness fix)
+
+3. ShippingAddressForm.tsx — division, district, upazila selects missing name
+   attribute; fullAddress textarea missing name and autoComplete attributes.
+   Without name, native form data is incomplete. autoComplete="street-address"
+   enables browser address autofill on the textarea.
+   Fix: added name={id} to SelectField's <select> (so name matches id: "division",
+   "district", "upazila"); added name="fullAddress" and
+   autoComplete="street-address" to the textarea.
+   (Form correctness + UX fix)
+
+4. DeliveryMethodSelector.tsx — cn() call had isSelected ? "text-foreground" :
+   "text-foreground" — both ternary branches produce the same Tailwind class.
+   Dead conditional; cn() always produced the same output regardless of state.
+   Fix: replaced with a plain className="text-sm font-semibold text-foreground",
+   removing the unnecessary cn() call and the dead conditional entirely.
+   (Dead code / performance fix)
+
+No issues found in:
+✔ Hardcoded colors — 0 across all 9 checkout files
+✔ console.log — 0 across all 9 checkout files
+✔ TODO / FIXME — 0 across all 9 checkout files
+✔ Duplicate components — 0 (CustomerInfoForm, ShippingAddressForm,
+  DeliveryMethodSelector, PaymentMethodSelector, CheckoutOrderSummary,
+  PlaceOrderButton, checkout/page.tsx all unique)
+✔ Unused imports — 0
+✔ Unused variables — 0
+✔ Broken imports — 0
+✔ Image optimization — next/image with fill, sizes="56px", descriptive alt
+✔ Link usage — Next.js <Link> used correctly for breadcrumb and back-to-cart
+✔ Server/Client boundary — "use client" only where required (interactive components)
+✔ Responsive — mobile (1-col) → lg:12-column grid verified
+✔ ARIA — role="radiogroup", aria-checked, aria-label, aria-required, aria-invalid,
+  aria-current="page", aria-live="polite", role="status", aria-busy all present
+
+Files Modified:
+- src/components/checkout/CustomerInfoForm.tsx — id added to error <p>;
+  name attributes added to fullName, phone, email inputs
+- src/components/checkout/ShippingAddressForm.tsx — name={id} added to select;
+  name="fullAddress" and autoComplete="street-address" added to textarea
+- src/components/checkout/DeliveryMethodSelector.tsx — dead cn() conditional removed
+
+Final Status:
+- Build: PASS (Next.js 16.2.12, Turbopack, 6/6 static pages)
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
+---
+
+Agent:
 Agent-08
 
 Task:

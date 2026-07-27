@@ -1,5 +1,35 @@
 # CHANGELOG — Version history and list of changes made across all project phases.
 
+v1.2.1
+
+Agent-08 final production audit — Checkout-only audit.
+
+Issues Found and Fixed:
+
+1. CustomerInfoForm.tsx: error <p> elements had no id — aria-describedby on
+   fullName, phone, email inputs pointed to non-existent DOM elements.
+   Added id={`${id}-error`} to FieldWrapper error paragraph.
+   (Accessibility fix — WCAG 2.1 SC 1.3.1, broken aria-describedby resolved)
+
+2. CustomerInfoForm.tsx: fullName, phone, email inputs missing name attribute.
+   Added name="fullName", name="phone", name="email".
+   (Form correctness fix — browser autofill and native form data)
+
+3. ShippingAddressForm.tsx: division, district, upazila selects missing name;
+   fullAddress textarea missing name and autoComplete.
+   Added name={id} to SelectField select; name="fullAddress" and
+   autoComplete="street-address" to textarea.
+   (Form correctness + UX fix)
+
+4. DeliveryMethodSelector.tsx: cn() had isSelected ? "text-foreground" :
+   "text-foreground" — both branches identical (dead conditional).
+   Replaced with plain className="text-sm font-semibold text-foreground".
+   (Dead code fix)
+
+No other issues found across all 12 audit categories.
+
+Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
+
 v1.2.0
 
 Checkout Page completed by Agent-08.

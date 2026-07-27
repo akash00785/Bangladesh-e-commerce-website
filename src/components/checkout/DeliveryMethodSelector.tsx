@@ -81,12 +81,7 @@ export default function DeliveryMethodSelector({
               {/* Info */}
               <div className="flex flex-1 flex-col gap-0.5 min-w-0">
                 <div className="flex items-center justify-between gap-2">
-                  <span
-                    className={cn(
-                      "text-sm font-semibold",
-                      isSelected ? "text-foreground" : "text-foreground",
-                    )}
-                  >
+                  <span className="text-sm font-semibold text-foreground">
                     {option.label}
                   </span>
                   <span
