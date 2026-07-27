@@ -10,6 +10,7 @@ export interface AccountOrder {
   id: string;
   date: string;
   item: string;
+  itemCount?: number;
   total: string;
   status: string;
   statusTone: "brand" | "sale" | "muted";
@@ -22,4 +23,15 @@ export interface SavedAddress {
   phone: string;
   address: string;
   isDefault?: boolean;
+}
+
+export interface WishlistItem {
+  id: string;
+  name: string;
+  price: string;
+  originalPrice?: string;
+  discount?: string;
+  category: string;
+  inStock: boolean;
+  initial: string;
 }

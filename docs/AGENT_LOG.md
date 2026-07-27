@@ -1,6 +1,75 @@
 # AGENT_LOG — Log of all agents, their tasks, statuses, and any issues encountered.
 
 Agent:
+Agent-10
+
+Task:
+User Account Dashboard Expansion — Sidebar Navigation, Order History Page,
+Wishlist Page, Saved Addresses Page, Profile Page. Frontend UI only, mock data.
+
+Status:
+Completed
+
+New Files Created:
+- src/app/account/layout.tsx — Next.js layout for /account/* routes; wraps all
+  sub-pages with AccountSidebar + flex content area; no new packages
+- src/components/account/AccountSidebar.tsx — Client component; mobile: horizontal
+  scrollable tab bar; desktop: sticky vertical sidebar with user avatar/name/phone,
+  nav links with active highlighting via usePathname, and Logout button (UI only)
+- src/components/account/OrderHistoryPage.tsx — Server component; 6 mock order
+  cards; each card: order ID, date, item summary, item count, total, status badge
+  (brand/sale/muted tone), View Details button (UI only)
+- src/components/account/WishlistPage.tsx — Client component; 6 mock product cards
+  with placeholder initial avatar, discount badge, inStock state; Remove and Move
+  to Cart buttons with local state removal; Empty State component
+- src/components/account/AddressesPage.tsx — Client component; 3 mock address cards
+  with Default badge, Edit button (UI only), Delete button (disabled for default);
+  Empty State; Add Address button (UI only)
+- src/components/account/ProfilePage.tsx — Client component; profile avatar with
+  initials and camera button placeholder; personal info form (name, phone, email,
+  gender, dob) with disabled/enabled toggle; Edit/Save/Cancel flow; aria-live
+  success banner; stats summary (orders, addresses, wishlist count)
+- src/app/account/orders/page.tsx — /account/orders route with metadata
+- src/app/account/wishlist/page.tsx — /account/wishlist route with metadata
+- src/app/account/addresses/page.tsx — /account/addresses route with metadata
+- src/app/account/profile/page.tsx — /account/profile route with metadata
+
+Modified Files:
+- src/types/account.ts — Added WishlistItem interface (id, name, price,
+  originalPrice, discount, category, inStock, initial); added optional itemCount
+  to AccountOrder (backward-compatible, no existing code broken)
+- src/constants/account.ts — Added MOCK_ALL_ORDERS (6 orders including
+  "বাতিল হয়েছে" muted tone); added MOCK_WISHLIST_ITEMS (6 items); extended
+  MOCK_SAVED_ADDRESSES from 2 to 3 addresses
+- docs/PROJECT_STATUS.md — Agent-10 phase and completion recorded
+- docs/AGENT_LOG.md — Agent-10 execution log added
+- docs/CHANGELOG.md — v1.4.0 entry added
+
+Quality Checks:
+- No console.log, TODO, or FIXME in any new file
+- No hardcoded colors — all design tokens (text-brand, bg-brand, text-sale,
+  bg-sale, text-destructive, bg-muted, border-border, etc.)
+- No new packages installed
+- All buttons/links have aria-label where needed; aria-current="page" on active
+  sidebar links; aria-live="polite" on profile success banner; aria-hidden="true"
+  on all decorative icons
+- Mobile-first: horizontal tab bar on mobile, sticky sidebar on lg+
+- Responsive grids: 1-col → 2-col → 3-col (wishlist)
+- Existing completed modules (AccountDashboard, LoginForm, etc.) not modified
+
+Lint Issue Found and Fixed:
+- AddressesPage.tsx: handleEdit(_id) — _id parameter unused.
+  Fixed: renamed to id and added void id; to acknowledge intentional UI-only stub.
+  (Lint correctness fix)
+
+Final Status:
+- Build: PASS (Next.js 16.2.12, Turbopack, 14/14 static pages)
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
+---
+
+Agent:
 Agent-08 (Final Production Audit)
 
 Task:
