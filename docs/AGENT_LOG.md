@@ -1,6 +1,91 @@
 # AGENT_LOG — Log of all agents, their tasks, statuses, and any issues encountered.
 
 Agent:
+Agent-08
+
+Task:
+Checkout Page — Checkout Page (/checkout route), Customer Information Form,
+Shipping Address Form (Division/District/Upazila), Delivery Method Selector,
+Payment Method Selector UI, Checkout Order Summary, Place Order Button.
+
+Status:
+Completed
+
+New Files Created:
+- src/types/checkout.ts — CustomerInfo, ShippingAddress, DeliveryMethod,
+  PaymentMethod, CheckoutFormState, CheckoutFormErrors, DeliveryOption,
+  PaymentOption, Division, District, Upazila interfaces
+- src/constants/checkout.ts — DELIVERY_OPTIONS (Home/Express with fees),
+  PAYMENT_OPTIONS (COD/bKash/Nagad/Rocket), DIVISIONS (8), DISTRICTS (30+),
+  UPAZILAS (30+), EXPRESS_DELIVERY_FEE, HOME_DELIVERY_FEE constants
+- src/components/checkout/CustomerInfoForm.tsx — Full Name (required), Phone
+  (required, BD format), Email (optional) with icon prefix, focus ring, and
+  per-field error messages; aria-required, aria-invalid, role="alert" on errors
+- src/components/checkout/ShippingAddressForm.tsx — Cascading Division → District
+  → Upazila selects (district disabled until division chosen; upazila disabled
+  until district chosen); Full Address textarea; parent change resets children;
+  accessible SelectField sub-component with ChevronDown icon and error states
+- src/components/checkout/DeliveryMethodSelector.tsx — Home Delivery / Express
+  Delivery radio group; custom radio indicator; Truck/Zap icons; delivery fee and
+  duration per option; role="radiogroup", aria-checked, aria-label
+- src/components/checkout/PaymentMethodSelector.tsx — COD / bKash / Nagad / Rocket
+  2-column responsive radio grid; emoji icon per method; UI-only note badge;
+  role="radiogroup", aria-checked, aria-label; no payment gateway integration
+- src/components/checkout/CheckoutOrderSummary.tsx — Product list with next/image,
+  quantity badge, size/color labels; subtotal, coupon discount (from CartContext),
+  delivery charge (dynamic from deliveryMethod prop), grand total; uses existing
+  FREE_SHIPPING_THRESHOLD, formatBanglaPrice, useCart
+- src/components/checkout/PlaceOrderButton.tsx — loading spinner state (aria-busy),
+  success state with CheckCircle2, disabled state; fully accessible button
+- src/app/checkout/page.tsx — /checkout route; breadcrumb (Home / Cart / Checkout);
+  success aria-live banner; mobile-first lg:12-column grid; inline validation with
+  Bengali error messages; phone regex (BD format); email regex; 1.5s simulated
+  async order placement (UI only); Back to Cart link; SSL trust note
+
+Quality Checks:
+- No console.log, TODO, or FIXME in any new file
+- All interactive elements have aria-label, aria-checked, aria-required, aria-invalid,
+  aria-busy, or role attributes
+- Decorative elements have aria-hidden="true"
+- No hardcoded colors — all design tokens used (text-brand, bg-brand, border-brand,
+  text-muted-foreground, bg-card, border-border, text-destructive, bg-brand/5, etc.)
+- No hardcoded spacing — standard Tailwind classes used
+- Mobile-first (grid-cols-1 → lg:grid-cols-12)
+- Responsive: single column mobile, 7/5 split on lg
+- No new packages installed
+- Images use next/image with fill, sizes, descriptive alt text
+- CartContext reused for subtotal, appliedCoupon, items, itemCount
+- Existing formatBanglaPrice, parseBanglaPrice, FREE_SHIPPING_THRESHOLD,
+  SHIPPING_FEE from existing utilities — no duplication
+- buttonVariants used for Back to Cart link (no asChild anti-pattern)
+
+Issues Found and Fixed:
+None — all files passed build, type-check, and lint on first attempt.
+
+Files Created:
+- src/types/checkout.ts
+- src/constants/checkout.ts
+- src/components/checkout/CustomerInfoForm.tsx
+- src/components/checkout/ShippingAddressForm.tsx
+- src/components/checkout/DeliveryMethodSelector.tsx
+- src/components/checkout/PaymentMethodSelector.tsx
+- src/components/checkout/CheckoutOrderSummary.tsx
+- src/components/checkout/PlaceOrderButton.tsx
+- src/app/checkout/page.tsx
+
+Modified Files:
+- docs/PROJECT_STATUS.md — Agent-08 phase and completion recorded
+- docs/AGENT_LOG.md — this entry
+- docs/CHANGELOG.md — v1.2.0 entry added
+
+Final Status:
+- Build: PASS (Next.js 16.2.12, Turbopack, 6/6 static pages including /checkout)
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
+---
+
+Agent:
 Agent-07 (Final Production Audit)
 
 Task:

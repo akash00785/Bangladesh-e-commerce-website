@@ -1,5 +1,55 @@
 # CHANGELOG — Version history and list of changes made across all project phases.
 
+v1.2.0
+
+Checkout Page completed by Agent-08.
+
+New files:
+- src/types/checkout.ts — CustomerInfo, ShippingAddress, DeliveryMethod, PaymentMethod,
+  CheckoutFormState, CheckoutFormErrors, DeliveryOption, PaymentOption,
+  Division, District, Upazila TypeScript interfaces
+- src/constants/checkout.ts — DELIVERY_OPTIONS (Home/Express), PAYMENT_OPTIONS
+  (COD/bKash/Nagad/Rocket), DIVISIONS (8), DISTRICTS (30+), UPAZILAS (30+),
+  EXPRESS_DELIVERY_FEE, HOME_DELIVERY_FEE constants
+- src/components/checkout/CustomerInfoForm.tsx — Full Name, Phone, Email form
+  with validation, icon prefix, aria-invalid, aria-required
+- src/components/checkout/ShippingAddressForm.tsx — Cascading Division → District
+  → Upazila selectors (disabled until parent selected) + Full Address textarea
+- src/components/checkout/DeliveryMethodSelector.tsx — Home Delivery / Express
+  Delivery radio group with fees, icons, duration
+- src/components/checkout/PaymentMethodSelector.tsx — COD / bKash / Nagad / Rocket
+  radio grid; UI-only preview note
+- src/components/checkout/CheckoutOrderSummary.tsx — Product list with images,
+  quantity badges, subtotal, coupon discount, delivery charge, grand total
+- src/components/checkout/PlaceOrderButton.tsx — loading spinner + success state
+  with aria-busy and aria-label
+- src/app/checkout/page.tsx — /checkout route; breadcrumb, mobile-first lg:12-column
+  grid, success banner with aria-live, inline form validation
+
+Modified:
+- docs/PROJECT_STATUS.md — Agent-08 phase and completion recorded
+- docs/AGENT_LOG.md — Agent-08 execution log added
+- docs/CHANGELOG.md — v1.2.0 entry added
+
+Features:
+- Mobile-first responsive layout (single column → lg:12-column grid)
+- Cascading dropdowns: Division → District → Upazila (resets child on parent change)
+- Phone validation: Bangladesh format (01XXXXXXXXX / +8801XXXXXXXXX)
+- Email validation (optional field)
+- Delivery method dynamically updates order summary total
+- Free shipping applied above ৳২,০০০ threshold (from existing CartContext)
+- Coupon discount carried over from CartContext into checkout summary
+- Place Order button: loading (1.5s simulated), success state, aria-busy
+- All interactive elements: aria-label, aria-checked, role="radiogroup"
+- No hardcoded colors — all design tokens (text-brand, bg-brand, border-border, etc.)
+- No new packages installed
+- UI-only payment method (no gateway integration)
+
+Quality:
+- Build: PASS (Next.js 16.2.12, Turbopack, 6/6 static pages including /checkout)
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
 v1.1.1
 
 Agent-07 final production audit — Cart-only audit.
