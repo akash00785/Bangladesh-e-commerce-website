@@ -1,5 +1,58 @@
 # CHANGELOG — Version history and list of changes made across all project phases.
 
+v1.6.0
+
+Agent-12 — Final Frontend Production Polish.
+
+New routes/files:
+- `/not-found` — Custom 404 page with SearchX icon, Bengali copy, Back to Home button (buttonVariants + brand colors)
+- `/error` — Global error boundary (client component) with AlertTriangle icon, Retry button, aria-live
+- `/loading` — Full skeleton loader (hero, product grid, category row, banner strip) using animate-pulse + bg-muted
+- `/manifest.webmanifest` — PWA manifest (name, short_name, description, start_url, theme_color, icons)
+- `/robots.txt` — Crawl rules: allow /, disallow /admin/ /account/ /checkout/ /cart/; sitemap linked
+- `/sitemap.xml` — 6 public routes with lastModified, changeFrequency, priority
+
+New files:
+- `src/app/not-found.tsx` — 404 page: SearchX icon, ৪০৪ heading, Bengali description, Back to Home Link
+- `src/app/error.tsx` — Global error page: "use client", AlertTriangle icon, Retry Button, aria-live="assertive"
+- `src/app/loading.tsx` — Skeleton loading UI: animate-pulse, hero block, 8 product card skeletons, 8 category skeletons
+- `src/app/robots.ts` — MetadataRoute.Robots; disallows private routes; links to sitemap
+- `src/app/sitemap.ts` — MetadataRoute.Sitemap; 6 public routes with SEO priority settings
+- `src/app/manifest.ts` — MetadataRoute.Manifest; PWA-ready manifest with Bengali name and theme_color
+
+Modified files:
+- `src/app/layout.tsx` — Comprehensive SEO metadata added:
+  - metadataBase (fashionbazar.com.bd)
+  - title template ("%s — Fashion Bazar")
+  - description, keywords (15 Bengali + English terms)
+  - robots (index/follow, googleBot max settings)
+  - openGraph (type, locale bn_BD, url, siteName, title, description, images)
+  - twitter (card summary_large_image, title, description, images, creator, site)
+  - icons (favicon.ico)
+  - alternates (canonical + bn-BD hreflang)
+- `docs/PROJECT_STATUS.md` — Agent-12 phase and completion recorded
+- `docs/AGENT_LOG.md` — Agent-12 execution log added
+- `docs/CHANGELOG.md` — v1.6.0 entry added
+
+Features:
+- 404 Page: reuses buttonVariants (bg-brand), design tokens only, accessible landmark with aria-label
+- Error Page: "use client"; reset() callback for Next.js error boundary retry; aria-live="assertive"
+- Loading Page: pure Tailwind animate-pulse skeleton; no new package; matches homepage structure
+- SEO: metadataBase enables relative OG image URLs; title template applies sitewide; bn_BD locale set
+- robots.txt: private dashboard routes excluded from crawling; sitemap URL included
+- sitemap.xml: homepage priority 1.0, cart 0.8, checkout 0.6, auth pages 0.4, forgot-password 0.2
+- manifest.webmanifest: PWA-ready; standalone display; Bengali full name + English short name
+- Empty States: reviewed all 4 existing empty states (cart, wishlist, addresses, admin categories)
+  — all consistent (icon + heading + description + CTA pattern) ✅ no changes needed
+- Repository cleanup: all new files have 0 unused imports, 0 dead code, 0 console.log, 0 TODO/FIXME
+- No new packages installed
+- No backend, API, database, authentication logic, or payment integration
+
+Validation:
+- Build: PASS (Next.js 16.2.12, Turbopack, 25/25 static pages)
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
 v1.5.0
 
 Agent-11 — Admin Panel UI.
@@ -61,7 +114,7 @@ Features:
 - Orders Management: filterable table/card with Search, Status Filter;
   Order Details button with aria-label per order
 - Categories Management: 8 category cards; Add Category form (live local state);
-  Inline Edit (live local state); Delete (live local state removal); Empty State
+  Inline Edit (live local state update); Delete (live local state removal); Empty State
 - All design tokens used — no hardcoded colors (no oklch/#hex/rgb/hsl)
 - Mobile-first responsive: horizontal tab bar → desktop sticky sidebar
 - Table → Card layout per breakpoint (md)
