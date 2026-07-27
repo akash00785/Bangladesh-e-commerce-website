@@ -1,5 +1,78 @@
 # CHANGELOG — Version history and list of changes made across all project phases.
 
+v1.5.0
+
+Agent-11 — Admin Panel UI.
+
+New routes:
+- `/admin` — Admin Dashboard Home with Statistics Cards, Recent Orders Table, Low Stock Widget, Quick Actions
+- `/admin/products` — Products Management UI with Search, Category Filter, Status Filter, Add/Edit/Delete
+- `/admin/orders` — Orders Management UI with Table, Status Badge, Details Button, Filter UI
+- `/admin/categories` — Categories Management UI with Add/Edit/Delete (live state)
+- `/admin/customers` — Stub page (শীঘ্রই আসছে)
+- `/admin/coupons` — Stub page (শীঘ্রই আসছে)
+- `/admin/reviews` — Stub page (শীঘ্রই আসছে)
+- `/admin/settings` — Stub page (শীঘ্রই আসছে)
+
+New files:
+- `src/types/admin.ts` — AdminStatCard, AdminProduct, AdminOrder, AdminCategory, AdminCustomer,
+  AdminRecentOrder, AdminLowStockItem, AdminStatusTone TypeScript interfaces
+- `src/constants/admin.ts` — ADMIN_STAT_CARDS (4), ADMIN_RECENT_ORDERS (5), ADMIN_LOW_STOCK (4),
+  ADMIN_PRODUCTS (10), ADMIN_ORDERS (8), ADMIN_CATEGORIES (8), ADMIN_CUSTOMERS (3),
+  PRODUCT_STATUS_LABELS, CATEGORY_FILTER_OPTIONS, PRODUCT_STATUS_FILTER_OPTIONS,
+  ORDER_STATUS_FILTER_OPTIONS mock data constants
+- `src/components/admin/AdminSidebar.tsx` — Sidebar/tab navigation (client component, usePathname
+  for active state); mobile: horizontal scrollable tab bar; desktop: sticky vertical sidebar with
+  Admin Panel badge and 8 nav links
+- `src/components/admin/AdminStatusBadge.tsx` — Reusable status badge (brand/sale/muted/destructive
+  tones); used across Dashboard, Products, Orders, Categories pages
+- `src/components/admin/AdminDashboard.tsx` — Statistics Cards (Revenue, Orders, Products, Customers),
+  Quick Actions (links to sub-pages), Recent Orders Table, Low Stock Widget
+- `src/components/admin/AdminProductsPage.tsx` — Products Table (desktop) + Cards (mobile); Search Box,
+  Category Filter dropdown, Status Filter dropdown; Add Product Button; Edit and Delete buttons per row
+- `src/components/admin/AdminOrdersPage.tsx` — Orders Table (desktop) + Cards (mobile); Search Box,
+  Status Filter dropdown; Order Details Button per row with aria-label
+- `src/components/admin/AdminCategoriesPage.tsx` — Category cards grid; Add Category form with live
+  React state (name + slug inputs, Save/Cancel); inline edit per card; Delete with live state removal
+- `src/app/admin/layout.tsx` — Admin layout; wraps all /admin/* routes with AdminSidebar + flex content
+- `src/app/admin/page.tsx` — /admin route with metadata
+- `src/app/admin/products/page.tsx` — /admin/products route with metadata
+- `src/app/admin/orders/page.tsx` — /admin/orders route with metadata
+- `src/app/admin/categories/page.tsx` — /admin/categories route with metadata
+- `src/app/admin/customers/page.tsx` — /admin/customers stub page
+- `src/app/admin/coupons/page.tsx` — /admin/coupons stub page
+- `src/app/admin/reviews/page.tsx` — /admin/reviews stub page
+- `src/app/admin/settings/page.tsx` — /admin/settings stub page
+
+Modified files:
+- `docs/PROJECT_STATUS.md` — Agent-11 phase and completion recorded
+- `docs/AGENT_LOG.md` — Agent-11 execution log added
+- `docs/CHANGELOG.md` — v1.5.0 entry added
+
+Features:
+- Admin Sidebar: 8 nav links (Dashboard / Products / Categories / Orders / Customers / Coupons /
+  Reviews / Settings); active route highlighting via usePathname; aria-current="page" on active links
+- Statistics Cards: Revenue, Orders, Products, Customers — each with icon, value, and sub-text
+- Quick Actions: shortcut links to Products, Categories, Orders, Customers
+- Recent Orders Table: 5 recent mock orders with customer name, total, status badge
+- Low Stock Widget: 4 items with stock count badge in destructive tone
+- Products Management: filterable table/card with Search, Category Filter, Status Filter;
+  Add Product button (UI only); Edit icon button; Delete icon button
+- Orders Management: filterable table/card with Search, Status Filter;
+  Order Details button with aria-label per order
+- Categories Management: 8 category cards; Add Category form (live local state);
+  Inline Edit (live local state); Delete (live local state removal); Empty State
+- All design tokens used — no hardcoded colors (no oklch/#hex/rgb/hsl)
+- Mobile-first responsive: horizontal tab bar → desktop sticky sidebar
+- Table → Card layout per breakpoint (md)
+- No new packages installed
+- No backend, API, database, authentication logic, file upload, or payment integration
+
+Validation:
+- Build: PASS (Next.js 16.2.12, Turbopack, 22/22 static pages)
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
 v1.4.1
 
 Agent-10 Final Production Audit — User Dashboard module-only audit.
