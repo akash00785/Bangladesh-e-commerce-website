@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Heart, ShoppingCart, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MOCK_WISHLIST_ITEMS } from "@/constants/account";
@@ -101,13 +102,12 @@ function EmptyWishlist() {
       <p className="mb-6 max-w-xs text-sm text-muted-foreground">
         আপনি এখনো কোনো পণ্য উইশলিস্টে যোগ করেননি। পছন্দের পণ্য যোগ করুন।
       </p>
-      <Button
-        variant="outline"
-        className="gap-2"
-        onClick={() => (window.location.href = "/")}
+      <Link
+        href="/"
+        className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-2.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
       >
         পণ্য দেখুন
-      </Button>
+      </Link>
     </div>
   );
 }

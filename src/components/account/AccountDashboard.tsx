@@ -86,7 +86,7 @@ export default function AccountDashboard() {
             <section className="rounded-2xl border border-border bg-card p-5 shadow-sm">
               <SectionHeading
                 title="সাম্প্রতিক অর্ডার"
-                action={<Link href="/orders" className="text-sm font-medium text-brand hover:underline">সব দেখুন</Link>}
+                action={<Link href="/account/orders" className="text-sm font-medium text-brand hover:underline">সব দেখুন</Link>}
               />
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[36rem] text-left text-sm">

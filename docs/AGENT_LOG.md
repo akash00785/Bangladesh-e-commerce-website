@@ -1,6 +1,81 @@
 # AGENT_LOG — Log of all agents, their tasks, statuses, and any issues encountered.
 
 Agent:
+Agent-10 (Final Production Audit)
+
+Task:
+User Dashboard module-only production audit — 10-category audit covering
+hardcoded colors, accessibility, active sidebar navigation, duplicate
+components, unused imports/variables/types, console.log/TODO/FIXME,
+broken imports, unnecessary re-renders, responsive layout, build/type-check/lint.
+
+Status:
+Completed
+
+Audit Scope:
+✔ Hardcoded colors — 0 across all dashboard files; all design tokens used
+✔ Accessibility — 1 issue found and fixed (see below)
+✔ Active sidebar navigation — PASS; usePathname with exact flag; aria-current="page"
+  on active links; /account matched exactly, sub-routes matched with startsWith
+✔ Duplicate components — PASS; 0 duplicates across 6 new components
+✔ Unused imports — PASS; 0 found (Link import added where needed)
+✔ Unused variables/types — PASS; 0 found
+✔ console.log — PASS; 0 found
+✔ TODO / FIXME — PASS; 0 found
+✔ Broken imports — PASS; all @/ aliases resolve correctly
+✔ Unnecessary re-renders — PASS; state local to each page component; no context fan-out
+✔ Responsive layout — PASS; mobile tab bar → sm:grid-cols-2 → lg:sidebar verified
+✔ Broken link — 1 issue found and fixed (see below)
+✔ Next.js anti-pattern — 1 issue found and fixed (see below)
+
+Issues Found and Fixed:
+
+1. WishlistPage.tsx — EmptyWishlist component used window.location.href = "/"
+   inside a button onClick. In Next.js this causes a full page reload instead
+   of client-side navigation, bypassing the router and losing client state.
+   Fix: replaced Button+onClick with a styled <Link href="/"> (next/link).
+   Added Link import. window.location reference removed entirely.
+   (Next.js best practice fix — client-side navigation restored)
+
+2. ProfilePage.tsx — <select id="gender"> had both a linked <label htmlFor="gender">
+   (via FieldWrapper) AND aria-label="লিঙ্গ নির্বাচন করুন" on the element itself.
+   The aria-label attribute overrides the programmatically linked <label> for
+   screen readers, causing the visible label to be ignored (WCAG 2.1 SC 1.3.1).
+   Fix: removed aria-label from the select element; FieldWrapper label is sufficient.
+   (Accessibility fix — WCAG 2.1 SC 1.3.1)
+
+3. AccountDashboard.tsx — "সব দেখুন" link used href="/orders" which resolves to
+   a non-existent route. The order history page is at /account/orders.
+   Fix: corrected href="/orders" → href="/account/orders".
+   (Broken link fix — real production navigation bug)
+
+No issues found in:
+✔ Hardcoded colors — 0 across AccountSidebar, OrderHistoryPage, WishlistPage,
+  AddressesPage, ProfilePage, layout
+✔ console.log — 0 across all 7 account files
+✔ TODO / FIXME — 0 across all 7 account files
+✔ Duplicate components — 0 (each component is unique)
+✔ Unused imports — 0 after adding Link import to WishlistPage
+✔ Broken imports — 0; all @/ aliases resolve correctly
+✔ Re-renders — no context fan-out; state isolated to each page
+✔ Responsive — mobile (tab bar) → sm:2-col → lg (sticky sidebar) verified
+
+Files Modified:
+- src/components/account/WishlistPage.tsx — window.location.href replaced
+  with styled <Link href="/">; Link added to imports
+- src/components/account/ProfilePage.tsx — aria-label removed from <select>;
+  linked <label> via FieldWrapper is the correct accessible label
+- src/components/account/AccountDashboard.tsx — href="/orders" corrected to
+  href="/account/orders"
+
+Final Status:
+- Build: PASS (Next.js 16.2.12, Turbopack, 14/14 static pages)
+- TypeScript: PASS (0 errors)
+- Lint: PASS (0 errors, 0 warnings)
+
+---
+
+Agent:
 Agent-10
 
 Task:

@@ -201,7 +201,6 @@ export default function ProfilePage() {
                 onChange={handleChange}
                 disabled={!isEditing}
                 className={inputBase}
-                aria-label="লিঙ্গ নির্বাচন করুন"
               >
                 <option value="পুরুষ">পুরুষ</option>
                 <option value="মহিলা">মহিলা</option>

@@ -1,5 +1,40 @@
 # CHANGELOG — Version history and list of changes made across all project phases.
 
+v1.4.1
+
+Agent-10 Final Production Audit — User Dashboard module-only audit.
+
+Issues Found and Fixed:
+
+1. WishlistPage.tsx: EmptyWishlist used window.location.href = "/" inside onClick.
+   Causes full page reload in Next.js, bypassing the router and losing client state.
+   Fixed: replaced with styled <Link href="/"> (next/link client-side navigation).
+   (Next.js anti-pattern fix)
+
+2. ProfilePage.tsx: <select id="gender"> had aria-label="লিঙ্গ নির্বাচন করুন"
+   alongside a linked <label htmlFor="gender"> from FieldWrapper.
+   aria-label overrides the programmatically linked label for screen readers,
+   violating WCAG 2.1 SC 1.3.1.
+   Fixed: removed aria-label from select; FieldWrapper label is correct and sufficient.
+   (Accessibility fix — WCAG 2.1 SC 1.3.1)
+
+3. AccountDashboard.tsx: "সব দেখুন" link used href="/orders" — non-existent route.
+   Order history page lives at /account/orders.
+   Fixed: href="/orders" → href="/account/orders".
+   (Broken link fix)
+
+No other issues across 10 audit categories:
+✔ Hardcoded colors: 0 found
+✔ Duplicate components: 0 found
+✔ Unused imports/variables/types: 0 found
+✔ console.log/TODO/FIXME: 0 found
+✔ Broken imports: 0 found
+✔ Unnecessary re-renders: 0 found
+✔ Active sidebar: usePathname + aria-current="page" verified
+✔ Responsive: mobile tab bar → sm:2-col → lg:sidebar verified
+
+Build: PASS | TypeScript: PASS | Lint: PASS (0 errors, 0 warnings)
+
 v1.4.0
 
 Agent-10 — User Account Dashboard Expansion.
